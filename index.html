@@ -1,0 +1,58 @@
+<!doctype html> 
+<html> 
+	<head> 
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>  
+	<link rel="stylesheet" href="css/style.css">
+	</head> 
+
+<body>
+	<!-- Do not display this at the moment
+	src attribute points to an external javascript file
+        example <script src="myscripts.js"></script>
+	-->
+
+	<form class="QueryParametersForm" onsubmit="onSubmitButton();return false;"> 
+		<select class="LanguageOptions">
+		<option value="ActionScript">ActionScript</option>
+		<option value="C">C</option>
+		<option value="C#">C#</option>
+		<option value="C++">C++</option>
+		<option value="Clojure">Clojure</option>
+		<option value="CoffeeScript">CoffeeScript</option>
+		<option value="CSS">CSS</option>
+		<option value="Go">Go</option>
+		<option value="Haskell">Haskell</option>
+		<option value="HTML">HTML</option>
+		<option value="Java">Java</option>
+		<option value="JavaScript">JavaScript</option>
+		<option value="Lua">Lua</option>
+		<option value="Matlab">Matlab</option>
+		<option value="Objective-C">Objective-C</option>
+		<option value="Perl">Perl</option>
+		<option value="PHP">PHP</option>
+		<option value="Python">Python</option>
+		<option value="R">R</option>
+		<option value="Ruby">Ruby</option>
+		<option value="Scala">Scala</option>
+		<option value="Shell">Shell</option>
+		<option value="Swift">Swift</option>
+		<option value="TeX">TeX</option>
+		<option value="Vim script">Vim script</option>
+	</select>
+	
+	<input type="checkbox" value="good first issue" >Good first issue<br>
+  	<input type="checkbox" value="help wanted"  >help wanted<br>
+
+	<br>
+	  <input type="submit" value="Submit">
+	</form>
+
+	<script src="fetchData.js"> </script>
+	<div class="SearchResults" >  </div> 
+
+</body> 
+</html> 
+
+
+
+
