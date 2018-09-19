@@ -3,14 +3,14 @@
 	<head> 
 	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>  
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	</head> 
 
 <body>
-	<!-- Do not display this at the moment
-	src attribute points to an external javascript file
-        example <script src="myscripts.js"></script>
-	-->
-
+<a id="github-button" class="btn btn-block btn-social btn-github">
+  <i class="fa fa-github"></i> Sign in with GitHub
+</a>
 	<form class="QueryParametersForm" onsubmit="onSubmitButton();return false;"> 
 		<select class="LanguageOptions">
 		<option value="ActionScript">ActionScript</option>
@@ -47,12 +47,12 @@
 	  <input type="submit" value="Submit">
 	</form>
 
+	<script src="authenticate.js"> </script>
 	<script src="fetchData.js"> </script>
 	<div class="SearchResults" >  </div> 
 
 </body> 
 </html> 
-
 
 
 

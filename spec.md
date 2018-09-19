@@ -22,6 +22,3 @@ GoodFirstIssue.com
 
 
 
-
-
-
