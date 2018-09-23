@@ -1,18 +1,9 @@
 // module.exports = { onSubmitButton, sum  };
-// https://stackoverflow.com/questions/14643617/create-table-using-javascript
 // https://www.flightlist.io/
 
-function sum(a, b) {
-  return a + b;
-}
-
-function show(edges) {	
-	var searchresults = $(".SearchResults")[0]
-	searchresults.innerHTML += " stuff"
-}
 
 var searchIssuesQuery  = `
-query SearchIssues($query:String!, $after: String) { 
+query SearchIssues($query:String!, $after: String) {
   search(query:$query, type:ISSUE, first: 50, after: $after) {
     edges {
     	node {
@@ -20,25 +11,25 @@ query SearchIssues($query:String!, $after: String) {
          repository {
 	   owner {
 		login
-	   }, 	
-	   url, 
-           name, 
+	   },
+	   url,
+           name,
 	   stargazers {
-		totalCount 
-         	}, 
-           },	 
+		totalCount
+         	},
+           },
 
            url,
-	   createdAt, 
+	   createdAt,
 
         }
-      } 
+      }
     }
 
     pageInfo {
       endCursor
       hasNextPage
-    }	
+    }
   }
 }
 
@@ -46,8 +37,8 @@ query SearchIssues($query:String!, $after: String) {
 
 
 function addSlashes(string) {
-	var slash = "\""; 
-	return slash + string + slash 
+	var slash = "\"";
+	return slash + string + slash
 }
 
 
@@ -55,18 +46,18 @@ function makeIssuesQuery(language, label, endCursor) {
 	return {
 		query:
 			"label:" + addSlashes(label) + " language:" + language + " " + "state:open",
-			"after": endCursor, 
+			"after": endCursor,
 	}
 }
 
 
 function getHTMLParameters() {
-	// get language 
-	var langOptions = $(".LanguageOptions")[0]; 
-	var selectedLanguage = langOptions[langOptions.selectedIndex].value 
+	// get language
+	var langOptions = $(".LanguageOptions")[0];
+	var selectedLanguage = langOptions[langOptions.selectedIndex].value
 		console.log(selectedLanguage);
-	// get labels 
-	
+	// get labels
+
 	return {
 		language: selectedLanguage
 	}
@@ -74,15 +65,15 @@ function getHTMLParameters() {
 }
 
 
-function daysBetweenDates(date1, date2) {	
+function daysBetweenDates(date1, date2) {
 	var oneDay = 24*60*60*1000;	// hours*minutes*seconds*milliseconds
 	var diffDays = Math.round((date2-date1)/oneDay);
-	return diffDays; 
+	return diffDays;
 }
 
 
 function afterDateLimit(date, todaysDate, monthLimit) {
-	var dayLimit = monthLimit * 30; 
+	var dayLimit = monthLimit * 30;
 	var daysBtwn =  daysBetweenDates(date, todaysDate);
 	return daysBtwn >= dayLimit
 }
@@ -90,36 +81,36 @@ function afterDateLimit(date, todaysDate, monthLimit) {
 
 class RepositoryContainer {
 	constructor(issue) {
-		this.owner = issue.repository.owner.login 
+		this.owner = issue.repository.owner.login
 		this.name = issue.repository.name
-		this.starcount = issue.repository.stargazers.totalCount 
+		this.starcount = issue.repository.stargazers.totalCount
 		this.issues = [ issue ]
-		this.url = issue.repository.url 
-	}	
+		this.url = issue.repository.url
+	}
 
 	addIssue(issue) {
-		this.issues.push(issue); 
+		this.issues.push(issue);
 	}
 }
 
 
 function isUndefined(object) {
-	return (typeof object === "undefined"); 
+	return (typeof object === "undefined");
 }
 
 
-function createContainers(issues, repoDict, repoNameDict) {	
+function createContainers(issues, repoDict, repoNameDict) {
         issues.forEach(i=>{
 		if (isUndefined(i)) { return; };
-		if (isUndefined(i.repository)) { return; } 	
-		var name = i.repository.name 
-		
+		if (isUndefined(i.repository)) { return; }
+		var name = i.repository.name
+
                 if (isUndefined(repoNameDict[name])) {
                         repoNameDict[name] = name;
                         var container = new RepositoryContainer(i);
-			repoDict[name] = container; 
+			repoDict[name] = container;
                 } else {
-                        repoDict[name].addIssue(i); 
+                        repoDict[name].addIssue(i);
                 }
 	});
 
@@ -129,7 +120,7 @@ function createContainers(issues, repoDict, repoNameDict) {
     		arrayvalues.push(repoDict[key]);
 	}
 
-	return arrayvalues 
+	return arrayvalues
 }
 
 
@@ -138,13 +129,13 @@ function createTable(issues) {
         var repoDict = {};
 
 	var body = document.getElementsByTagName("body")[0];
-	var table = makeTableElement();  
+	var table = makeTableElement();
 	var allRepositories = createContainers(issues, repoDict, repoNameDict);
-	addHeadersTo(table); 
+	addHeadersTo(table);
 
 	function compare(a, b) {
-		var a = a.issues.length 
-		var b = b.issues.length 
+		var a = a.issues.length
+		var b = b.issues.length
   		let comparison = 0;
 
  		 if (a > b) {
@@ -156,30 +147,32 @@ function createTable(issues) {
  		 return comparison;
 	};
 
-	allRepositories.sort(compare); 
-	
+	allRepositories.sort(compare);
+
 	allRepositories.forEach(i=>{
 		var l = i.issues.length;
 		var stars = i.starcount;
-		var row = insertIntoTableElement(i.owner, i.name, i.url, l, stars); 
-		table.appendChild(row); 		 
+		var row = insertIntoTableElement(i.owner, i.name, i.url, l, stars);
+		table.appendChild(row);
 	})
 
-	// if an old table exists, remove it 	
-	$("table").remove();	
+	// if an old table exists, remove it
+	$("table").remove();
 
-	body.appendChild(table); 
-	table.classList.add("table"); 
+	body.appendChild(table);
+	table.classList.add("table");
 }
+
 
 function addHeadersTo(table) {
 	var row = document.createElement("tr");
-	table.appendChild(row); 
+	table.appendChild(row);
 
-	appendHeaderCell(row, "Repositories"); 
+	appendHeaderCell(row, "Repositories");
 	appendHeaderCell(row, "Good First Issues");
 	appendHeaderCell(row, "Star Count");
-} 
+}
+
 
 function appendHeaderCell(row, text) {
  	var cell = document.createElement("th");
@@ -192,99 +185,125 @@ function appendHeaderCell(row, text) {
 function makeTableElement() {
         // create elements <table> and a <tbody>
         var table = document.createElement("table");
-	var thead = document.createElement("thead"); 
+	var thead = document.createElement("thead");
         var tbody = document.createElement("tbody");
-	return table 
+	return table
 }
 
 
 function appendCell(row, text) {
-	var cell = document.createElement("td"); 
-	var celltext = document.createTextNode(text); 
-	cell.appendChild(celltext); 
-	row.appendChild(cell); 
+	var cell = document.createElement("td");
+	var celltext = document.createTextNode(text);
+	cell.appendChild(celltext);
+	row.appendChild(cell);
 }
+
 
 function formatNameCell(repoOwnerLogin, repoName, url, row) {
 	var cell = document.createElement("td");
 	var span = document.createElement("span");
-	var a = document.createElement("a"); 
-	var loginText = document.createTextNode(repoOwnerLogin + " / "); 
+	var a = document.createElement("a");
+	var loginText = document.createTextNode(repoOwnerLogin + " / ");
 	var repoNameText = document.createTextNode(repoName);
-	
+
 	a.appendChild(loginText);
 	$(a).attr("href", url);
-	$(a).attr("target", "_blank");  
+	$(a).attr("target", "_blank");
 	a.classList.add("ownerLoginText");
-	a.appendChild(repoNameText); 
+	a.appendChild(repoNameText);
 
-	cell.appendChild(a);  
-	row.appendChild(cell); 	
+	cell.appendChild(a);
+	row.appendChild(cell);
 }
 
 
 function insertIntoTableElement(repoOwnerLogin, repoName, url,  issueCount, starCount) {
-	var row = document.createElement("tr"); 
-	formatNameCell(repoOwnerLogin, repoName, url, row); 
-	appendCell(row, issueCount); 
-	appendCell(row, starCount);  
-	return row;  	
+	var row = document.createElement("tr");
+	formatNameCell(repoOwnerLogin, repoName, url, row);
+	appendCell(row, issueCount);
+	appendCell(row, starCount);
+	return row;
+}
+
+
+function throwLoading(spinner) {
+	spinner.css("display", "block");
+	console.log("throwing loading spinner");
+}
+
+
+function stopLoadingSpinner(spinner, time) {
+
+	function stopLoading() {
+		spinner.css("display", "none");
+	}
+
+
+	console.log(time);
+	var now = new Date().getTime();
+	console.log(now);
+	var interval = new Date().getTime() - time
+	console.log(interval);
+	spinner.css("display", "none");
 }
 
 
 function onSubmitButton() {
-	var parameters = getHTMLParameters()
+	var time = new Date().getTime()
+	var spinner = $('.spinner')
+	throwLoading(spinner);
+	var parameters = getHTMLParameters();
 	var fetchCount = 0;
 	var labels = ["good first issue", "starter-task"];
-	var todaysDate = new Date(); 
-	var issuesFetched = [];  
+	var todaysDate = new Date();
+	var issuesFetched = [];
 	var uniqueRepositories = []
 
-	var i = 0;  
+	var i = 0;
 
 	function makeQuery(endCursor) {
 		var query = makeIssuesQuery(parameters.language, labels[i], endCursor);
 		fetchQuery(searchIssuesQuery, query, handleData );
 	}
 
-	function handleData(data) { 
+	function handleData(data) {
 		var issues = data.data.search.edges.map(edge=>{ return edge.node  });
-		console.log(issues.length);  
+		console.log(issues.length);
 		issuesFetched = issuesFetched.concat(issues);
-		console.log(issuesFetched.length);  
-		var pageInfo = data.data.search.pageInfo; 
-		var earliestIssue = issues[issues.length-1]		
-		var date = earliestIssue.createdAt;  
+		console.log(issuesFetched.length);
+		var pageInfo = data.data.search.pageInfo;
+		var earliestIssue = issues[issues.length-1]
+		var date = earliestIssue.createdAt;
 
 		if (pageInfo.hasNextPage && !afterDateLimit(new Date(date), todaysDate, 4)) {
-			fetchCount += 1; 	 
+			fetchCount += 1;
 			var after = pageInfo.endCursor;
-	
-			// { "query": "label:\"good first issue\" ", "after": "Y3Vyc29yOjg="} 
-		
+
+			// { "query": "label:\"good first issue\" ", "after": "Y3Vyc29yOjg="}
+
 			makeQuery(pageInfo.endCursor);
- 
+
 		} else {
-			i += 1; 
+			i += 1;
 			if (i >= labels.length) {
 				console.log("finished " + issuesFetched.length);
                         	createTable(issuesFetched);
 			} else {
-				makeQuery(); 	
+				makeQuery();
 			}
-	
+
+			stopLoadingSpinner(spinner, new Date().getTime());
 			console.log("finished " + issuesFetched.length);
- 			createTable(issuesFetched); 
+ 			createTable(issuesFetched);
 		}
 	}
 
-	makeQuery(); 
+	makeQuery();
 }
 
 
 function fetchQuery(query, variables, callback)  {
-	var token = 'a7ad9acfb0df8d6f00949f7446f82280df5c7bb6';
-
+	var token = '3d1937628560b5d023c8a239fd0fa8245bfdd553';
 	//https://graphql.org/graphql-js/graphql-clients/
 
 	var body = JSON.stringify({
@@ -294,20 +313,16 @@ function fetchQuery(query, variables, callback)  {
 
 
 	fetch('https://api.github.com/graphql',
-	{	       
+	{
         	method: 'POST',
         	headers: {
                 	'Content-Type': 'application/json',
-                	'Accept': 'application/json', 
+                	'Accept': 'application/json',
                 	'Authorization': 'Bearer' + ' ' + token,
-        	}, 
-        	body: body 
+        	},
+        	body: body
 
 	}).then(r => r.json()).then(data => {
     		callback(data);
 	});
- 
 }
-
-
-
