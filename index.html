@@ -5,13 +5,20 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 	</head>
 <style>
 
+body {
+        background-color: rgba(250, 251, 254, 1.0);
+}
+
 .IssueLabel {
-    background-color: #7057ff;
-    color: #fff;
     height: 20px;
     padding: 0.15em 6px;
     font-size: 14px;
@@ -21,7 +28,23 @@
     box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12);
 }
 
+.GoodFirstIssue {
+	background-color: #7057ff;
+	color: #ffffff;
+}
+
+.StarterTask {
+    background-color: #62dbc9;
+    color: #000000;
+}
+
+.HelpWanted {
+    background-color: #008672;
+    color: #ffffff;
+}
+
 .search-body {
+background-color: #ffffff;
 box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
 border: 1px solid rgba(154, 161, 171, .15);
 }
@@ -31,16 +54,13 @@ border: 1px solid rgba(154, 161, 171, .15);
   display: none;
   position: absolute;
   left: 50%;
-  top: 50%;
   z-index: 1;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: -75px 0 0 -75px;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: 16px solid #7057ff;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
@@ -75,33 +95,111 @@ border: 1px solid rgba(154, 161, 171, .15);
 }
 
 .welcome {
-	font-family: 'Lato', sans-serif;
-	border: 1px solid black;
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    font-family: 'Lato', sans-serif;
 }
+
 
 .hidden {
 display: none;
 }
 
+.welcome {
+}
+
+.welcome h1 {
+    font-weight: 700;
+}
+
+.lead {
+    margin-bottom: 0.775rem !important;
+}
+
+.form-header {
+	margin-left: 15px;
+	margin-top: 0.75rem;
+	margin-bottom: 2rem;
+}
+
+.TopLabel {
+	margin-top: 8px;
+	margin-left: 8px;
+}
+
+.custom-select {
+    display: inline-block;
+    max-width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.25;
+    color: #464a4c;
+    vertical-align: middle;
+    background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' v…'0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
+    -webkit-background-size: 8px 10px;
+    background-size: 8px 10px;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.QuestionsSuggestions  {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	font-size: 0.8rem;
+}
+
+.text-muted {
+color: #636c72;
+margin-bottom: 0px;
+font-weight: 300;
+font-size: 90%;
+margin-right: 6px;
+}
+
+.paddedLeftMargin {
+margin-left: 25px;
+}
+
+#submit {
+margin-left: 25px;
+width: 300px;
+}
+
+.sortsTable:hover {
+color: #7057ff;
+cursor: url(hand.cur), pointer;
+}
+
+
 </style>
 
 <body>
+     	<p class="TopLabel"><label class="IssueLabel GoodFirstIssue">Good First Issue</label>.com</p>
+	<div class="container-fluid hidden-sm-down">
+	<div class="row">
+	<div class="col-md-12 text-center QuestionsSuggestions">
+	<span class="news">Questions? Suggestions? <a class="center-block" target="_blank" href="https://twitter.com/messages/compose?recipient_id=966086645111025665">Send me a PM</a> on <i class="fa fa-twitter" aria-hidden="true"></i></span>
+	</div>
+	</div>
+	</div>
 
-	<label class="IssueLabel ">Good First Issue</label>
-
+	<span class="octicon octicon-clippy"></span>
 	<div class="container welcome">
 		<div class="row d-block">
-		<h1>Find Great Open Source Projects</h1>
-		<p>Made for new contributors to find issues and repositories open to all skill levels.</p>
+		<h1>Find Great Open Source Opportunities.</h1>
+		<p class="lead">Made for new contributors to find great Open Source projects.</p>
+		<p>Discover Issues and Repositories with <label class="IssueLabel HelpWanted">Help Wanted</label> <label class="IssueLabel StarterTask">Starter Task</label> and <Label class="IssueLabel GoodFirstIssue">Good First Issue</label> labels. </p>
 		</div>
 	</div>
 
 	<div class="container search-body">
   		<div class="row">
 				<div class = 'form-header'>
-					<form class="QueryParametersForm" onsubmit="onSubmitButton();return false;">
-						<select class="LanguageOptions" onchange="onSubmitButton()">
-							<option label="Choose Language"></option> 
+				<form class="QueryParametersForm form-inline" onsubmit="onSubmitButton();return false;">
+						<select class="LanguageOptions form-control" onchange="onSubmitButton()">
+							<option>Choose Language</option>
 							<option value="ActionScript">ActionScript</option>
 							<option value="C">C</option>
 							<option value="C#">C#</option>
@@ -128,17 +226,22 @@ display: none;
 							<option value="TeX">TeX</option>
 							<option value="Vim script">Vim script</option>
 						</select>
-				</form>
-			</div> 
-		<div class="spinner" ></div>
+					</form>
+				</div>
+
 		<div class="table-responsive">
-		<table class="table">
+		<div class="spinner"></div>
+		<table class="table hidden">
+			<col width="40%">
+			<col width="20%">
+			<col width="20%">
+			<col width="20%">
 			<thead>
 				<tr>
 				<th>Repository</th>
-				<th>Good First Issues</th>
-				<th>Stars</th>
-				<th>Updated At</th>
+				<th class="sortsTable" value="Good First Issue">Good First Issues</th>
+				<th class="sortsTable" value="Stars">Stars</th>
+				<th>Last Update</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -150,6 +253,7 @@ display: none;
 		</div>
 	</div>
 
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -157,6 +261,7 @@ display: none;
 </html>
 
 <script>
+
 
 var searchIssuesQuery  = `
 query SearchIssues($query:String!, $after: String) {
@@ -190,6 +295,76 @@ query SearchIssues($query:String!, $after: String) {
 }
 
 `
+
+
+class RepositoryContainer {
+        constructor(issue) {
+                this.owner = issue.repository.owner.login
+                this.name = issue.repository.name
+                this.starcount = issue.repository.stargazers.totalCount
+                this.issues = [ issue ]
+                this.url = issue.repository.url
+                this.updatedAt = issue.repository.updatedAt
+        }
+
+        addIssue(issue) {
+                this.issues.push(issue);
+        }
+}
+
+function sortByGoodFirstIssues(repos) {
+
+       function compare(a, b) {
+           return returnComp(a.issues.length, b.issues.length, a.starcount, b.starcount) 
+	};
+
+
+        repos.sort(compare);
+	return repos; 
+}
+
+function returnComp(a, b,  tiebreaker1, tiebreaker2) {
+		
+
+	if (a > b) {
+            return -1;          
+        } else if (b > a) {
+            return 1;
+       	} else if (tiebreaker1 > tiebreaker2) {
+	    return -1 
+	} else if (tiebreaker2 > tiebreaker1) {
+	    return 1; 
+	}
+
+	return 0
+}
+
+
+function sortByStars(repos) {
+	function compare(a, b) {
+		return returnComp(a.starcount, b.starcount, a.issues.length, b.issues.length)
+        };
+
+        repos.sort(compare);
+        return repos;
+}
+
+
+function sortBy(value, repositories) {
+
+	switch (value) {
+
+                case "Good First Issue":
+                       	return sortByGoodFirstIssues(repositories); 
+			break;
+
+                case "Stars":
+			return sortByStars(repositories); 
+                        break; 
+
+        }
+
+}
 
 
 function addSlashes(string) {
@@ -235,22 +410,6 @@ function afterDateLimit(date, todaysDate, monthLimit) {
 }
 
 
-class RepositoryContainer {
-	constructor(issue) {
-		this.owner = issue.repository.owner.login
-		this.name = issue.repository.name
-		this.starcount = issue.repository.stargazers.totalCount
-		this.issues = [ issue ]
-		this.url = issue.repository.url
-		this.updatedAt = issue.repository.updatedAt
-	}
-
-	addIssue(issue) {
-		this.issues.push(issue);
-	}
-}
-
-
 function isUndefined(object) {
 	return (typeof object === "undefined");
 }
@@ -285,35 +444,24 @@ function createTable(issues) {
 	console.log("***** create table called ****");
  	var repoNameDict = {};
         var repoDict = {};
-
 	var body = document.getElementsByTagName("body")[0];
-	var table = makeTableElement();
 	var allRepositories = createContainers(issues, repoDict, repoNameDict);
 
-	function compare(a, b) {
-		var a = a.issues.length
-		var b = b.issues.length
-  		let comparison = 0;
+	sortByGoodFirstIssues(allRepositories); 
+	makeTableFromRepos(allRepositories); 
+	return allRepositories 
+};
 
- 		 if (a > b) {
-   	   	     comparison = -1;
-		  } else if (b > a) {
- 		     comparison = 1;
- 		 }
 
- 		 return comparison;
-	};
-
-	allRepositories.sort(compare);
-
-	allRepositories.forEach(i=>{
-		var length = i.issues.length;
-		var stars = i.starcount
-		var updatedAt = i.updatedAt;
-		var row = insertIntoTableElement(i.owner, i.name, i.url, length, stars, updatedAt);
-		$('table tbody')[0].appendChild(row);
-	})
+function makeTableFromRepos(repositories) {
+     makeTableElement(); 	
+     repositories.forEach(i=>{
+         var row = insertIntoTableElement(i.owner, i.name, i.url, i.issues.length, i.starcount, i.updatedAt);
+         $('table tbody')[0].appendChild(row);
+     })
 }
+
+
 function removeRows(table) {
 	$('table tbody tr').remove();
 }
@@ -325,7 +473,6 @@ function makeTableElement() {
         var table = $('table')[0];
 	table.classList.remove('hidden');
 	removeRows(table);
-	return table
 }
 
 
@@ -372,11 +519,22 @@ function formatUpdatedAtDate(updatedAt) {
 }
 
 
+function appendStarCell(row, stars) {
+	var cell = document.createElement("td");
+	var starSVG = starSVGIcon();
+	var p1 = "<p>";
+	var p2 = "</p>";
+	var space = " ";
+	$(cell).html(p1 + starSVG + space + stars + p2);
+        row.appendChild(cell);
+}
+
+
 function insertIntoTableElement(repoOwnerLogin, repoName, url,  issueCount, stars, updatedAt) {
 	var row = document.createElement("tr");
 	formatNameCell(repoOwnerLogin, repoName, url, row);
 	appendCell(row, issueCount);
-	appendCell(row, stars);
+	appendStarCell(row, stars);
 	appendCell(row, formatUpdatedAtDate(updatedAt));
 	return row;
 }
@@ -394,7 +552,6 @@ function stopLoadingSpinner(spinner, time) {
 		spinner.css("display", "none");
 	}
 
-
 	console.log(time);
 	var now = new Date().getTime();
 	console.log(now);
@@ -403,9 +560,15 @@ function stopLoadingSpinner(spinner, time) {
 	spinner.css("display", "none");
 }
 
+function starSVGIcon() {
+	return '<svg aria-label="star" style="margin-top: -5px" viewBox="0 0 14 16" version="1.1" width="14" height="16" role="img"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>'
+}
+
+
 
 function onSubmitButton() {
-	var parameters = getHTMLParameters(); 
+
+	var parameters = getHTMLParameters();
 	if (parameters.language == "") {
 		return;
 	}
@@ -419,6 +582,24 @@ function onSubmitButton() {
 	var issuesFetched = [];
 	var uniqueRepositories = []
 	var labelIndex = 0;
+
+	function setupSortMech(repos) {
+		$(".sortsTable").click(function() {
+			console.log("seen ");	
+                	var value = $(this).attr('value');
+			var sortedRepos = sortBy(value, repos); 
+			makeTableFromRepos(sortedRepos); 
+		});
+
+	}
+
+	function finishedFetchingRepos() {
+		console.log("finished " + issuesFetched.length);
+                stopLoadingSpinner(spinner, new Date().getTime());
+                console.log("finished " + issuesFetched.length);
+                var repos = createTable(issuesFetched);
+		setupSortMech(repos); 
+	}
 
 	function makeQuery(endCursor) {
 		var query = makeIssuesQuery(parameters.language, labels[labelIndex], endCursor);
@@ -434,23 +615,19 @@ function onSubmitButton() {
 	function fetchNextLabel() {
              labelIndex += 1;
              if (labelIndex >= labels.length) {
-                     console.log("finished " + issuesFetched.length);
-		     stopLoadingSpinner(spinner, new Date().getTime());
-                     console.log("finished " + issuesFetched.length);
-                     createTable(issuesFetched);
-
+                     finishedFetchingRepos(); 
 	     } else {
                      makeQuery();
              }
 	}
 
 	function handleData(data) {
-		
+
 		if (data == null || data.data == null) {
 			fetchNextLabel();
-			return;  
+			return;
 		}
-  
+
 		var issues = data.data.search.edges.map(edge=>{ return edge.node  });
 		console.log(issues.length);
 		issuesFetched = issuesFetched.concat(issues);
@@ -479,7 +656,6 @@ function onSubmitButton() {
 
 
 function fetchQuery(query, variables, callback)  {
-	var token = '3d1937628560b5d023c8a239fd0fa8245bfdd553';
 	//https://graphql.org/graphql-js/graphql-clients/
 
 	var body = JSON.stringify({
