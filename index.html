@@ -3,7 +3,7 @@
 	<head>
 	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=monospace" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
@@ -14,9 +14,16 @@
 	</head>
 <style>
 
-body {
-        background-color: rgba(250, 251, 254, 1.0);
+body{
+		/* background-color: rgba(250, 251, 254, 1.0); */
+		/* font-family: monospace; */
+		background: url(https://p0.pxfuel.com/preview/369/380/42/backdrop-background-blank-color.jpg);
+		background-size: cover;
+		background-position: center;	
+		color: white;	
+		
 }
+
 
 .IssueLabel {
     height: 20px;
@@ -29,24 +36,27 @@ body {
 }
 
 .GoodFirstIssue {
-	background-color: #7057ff;
-	color: #ffffff;
+	background-color: #008672;
+	color:black;
 }
 
 .StarterTask {
-    background-color: #62dbc9;
-    color: #000000;
+    background-color:#008672 ;
+    color:black;
 }
 
 .HelpWanted {
     background-color: #008672;
-    color: #ffffff;
+    color: black;
 }
 
 .search-body {
-background-color: #ffffff;
+background-color: #00ffff;
 box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
-border: 1px solid rgba(154, 161, 171, .15);
+border: 1px solid rgba(129, 131, 133, 0.15);
+background-image: url(https://p0.pxfuel.com/preview/369/380/42/backdrop-background-blank-color.jpg);
+background-size: cover;
+
 }
 
 
@@ -172,6 +182,12 @@ color: #7057ff;
 cursor: url(hand.cur), pointer;
 }
 
+.news{
+	color: white;
+} 
+.center-block{
+	color: white;
+}
 
 </style>
 
@@ -179,7 +195,7 @@ cursor: url(hand.cur), pointer;
      	<p class="TopLabel"><label class="IssueLabel GoodFirstIssue">Good First Issue</label>.com</p>
 	<div class="container-fluid hidden-sm-down">
 	<div class="row">
-	<div class="col-md-12 text-center QuestionsSuggestions">
+	<div class="col-md-12 text-left QuestionsSuggestions">
 	<span class="news">Questions? Suggestions? <a class="center-block" target="_blank" href="https://twitter.com/messages/compose?recipient_id=966086645111025665">Send me a PM</a> on <i class="fa fa-twitter" aria-hidden="true"></i></span>
 	</div>
 	</div>
@@ -194,8 +210,9 @@ cursor: url(hand.cur), pointer;
 		</div>
 	</div>
 
+	
 	<div class="container search-body">
-  		<div class="row">
+		<div class="row">
 				<div class = 'form-header'>
 				<form class="QueryParametersForm form-inline" onsubmit="onSubmitButton();return false;">
 						<select class="LanguageOptions form-control" onchange="onSubmitButton()">
@@ -252,6 +269,7 @@ cursor: url(hand.cur), pointer;
 		</div>
 		</div>
 	</div>
+	
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
