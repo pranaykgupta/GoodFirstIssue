@@ -4,6 +4,7 @@
 display: inline;
 }
 
+
 .table {
 background: orange;
 width: 90%;
@@ -56,4 +57,5 @@ margin: auto;
     padding: .5rem 1rem;
     font-size: 1rem;
     border-radius: .25rem;
+    
 }
