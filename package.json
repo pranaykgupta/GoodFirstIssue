@@ -2,19 +2,33 @@
   "name": "githubapiproject",
   "version": "1.0.0",
   "description": "",
-  "main": "async.js",
+  "main": "index.html",
   "scripts": {
-    "test": "jest"
+    "start": "npm run lite",
+    "test": "jest",
+    "lite": "lite-server"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^6.0.0",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "lite-server": "^2.6.1"
   },
   "dependencies": {
     "http-server": "^0.11.1",
     "octicons": "^8.1.0",
     "requirejs": "^2.3.6"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranaykgupta/GoodFirstIssue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pranaykgupta/GoodFirstIssue/issues"
+  },
+  "homepage": "https://github.com/pranaykgupta/GoodFirstIssue#readme"
 }
