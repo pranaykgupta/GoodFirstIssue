@@ -12,6 +12,7 @@ margin: auto;
 }
 
 .spinner {
+  background-color: #FFFFFF;
   display: none;
   position: absolute;
   left: 50%;
