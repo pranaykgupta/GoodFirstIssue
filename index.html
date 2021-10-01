@@ -172,7 +172,18 @@ color: #7057ff;
 cursor: url(hand.cur), pointer;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
 
+body::-webkit-scrollbar-track {
+  background:  linear-gradient(0deg, rgb(0, 255, 149) 0%, rgb(169, 0, 211) 100%);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent; /* opacity: 0; should do the thing either */
+  box-shadow: 0px 0px 0px 100000vh black;
+}
 </style>
 
 <body>
