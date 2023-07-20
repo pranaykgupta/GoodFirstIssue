@@ -58,12 +58,68 @@ border: 1px solid rgba(154, 161, 171, .15);
   width: 120px;
   height: 120px;
   margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
+  /* border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #7057ff;
+  border-top: 16px solid #7057ff; */
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
+.load{
+  position: absolute;
+  display: inline-block;
+  
+  background-image:url(Poké_Ball_icon.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  left: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -75px 0 0 -75px;
+  /* border-radius: 50%;
+  border: 5px dotted #f6f4f4;
+  border-style: solid solid dotted dotted;
+  box-sizing: border-box; */
+  animation: rotate 1.0s linear infinite;
+
+}
+.load::after{
+	position: absolute;
+	content: " ";
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	/* box-sizing: border-box;
+	border: 5px dotted #eceef0;
+	border-radius: 50%;
+	border-style: solid solid dotted; */
+	height: 50px;
+	width: 50px;
+	transform-origin: center center;
+	animation: rotateBack 2s linear infinite;
+}
+@keyframes rotate{
+	0% {
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+@keyframes rotateBack{
+	0% {
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+
+
 
 
 @-webkit-keyframes spin {
@@ -118,8 +174,9 @@ display: none;
 
 .form-header {
 	margin-left: 15px;
+	margin-right: 15px;
 	margin-top: 0.75rem;
-	margin-bottom: 2rem;
+	margin-bottom: 0.75rem;
 }
 
 .TopLabel {
@@ -228,9 +285,11 @@ cursor: url(hand.cur), pointer;
 						</select>
 					</form>
 				</div>
-
+				
 		<div class="table-responsive">
 		<div class="spinner"></div>
+		<div class="load hidden"></div>
+		
 		<table class="table hidden">
 			<col width="40%">
 			<col width="20%">
@@ -544,6 +603,23 @@ function throwLoading(spinner) {
 	spinner.css("display", "block");
 	console.log("throwing loading spinner");
 }
+function throwLoading(load) {
+	load.css("display", "block");
+	console.log("throwing loading load");
+}
+function stopLoadingload(load, time) {
+
+function stopLoading() {
+	load.css("display", "none");
+}
+
+console.log(time);
+var now = new Date().getTime();
+console.log(now);
+var interval = new Date().getTime() - time
+console.log(interval);
+load.css("display", "none");
+}
 
 
 function stopLoadingSpinner(spinner, time) {
@@ -575,6 +651,8 @@ function onSubmitButton() {
 
 	var time = new Date().getTime()
 	var spinner = $('.spinner')
+	var load = $('.load')
+	throwLoading(load);
 	throwLoading(spinner);
 	var fetchCount = 0;
 	var labels = ["easy contribution", "good first issue", "starter-task"];
@@ -596,6 +674,7 @@ function onSubmitButton() {
 	function finishedFetchingRepos() {
 		console.log("finished " + issuesFetched.length);
                 stopLoadingSpinner(spinner, new Date().getTime());
+				stopLoadingload(load, new Date().getTime());
                 console.log("finished " + issuesFetched.length);
                 var repos = createTable(issuesFetched);
 		setupSortMech(repos); 
