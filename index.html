@@ -251,6 +251,11 @@ cursor: url(hand.cur), pointer;
 
 		</div>
 		</div>
+		<div class="footer-good-first">
+			<h3>Find Great Open Source Opportunities.</h3>
+			<p>Created for new contributors to find some good opportunities here.</p>
+			<p>Good First Issue &copy; <span id="copyright"></span> All rights reserved.</p>
+		</div>
 	</div>
 
 
@@ -262,6 +267,8 @@ cursor: url(hand.cur), pointer;
 
 <script>
 
+// Javascript for year
+document.getElementById("copyright").innerHTML = (new Date().getFullYear());
 
 var searchIssuesQuery  = `
 query SearchIssues($query:String!, $after: String) {
