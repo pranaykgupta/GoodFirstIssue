@@ -313,15 +313,15 @@ class RepositoryContainer {
 }
 
 function sortByGoodFirstIssues(repos) {
-
-       function compare(a, b) {
-           return returnComp(a.issues.length, b.issues.length, a.starcount, b.starcount) 
-	};
-
-
-        repos.sort(compare);
-	return repos; 
+  repos.sort((a, b) => {
+    if (b.issues.length === a.issues.length) {
+      return b.starcount - a.starcount; // Tie-breaker
+    }
+    return b.issues.length - a.issues.length;
+  });
+  return repos;
 }
+
 
 function returnComp(a, b,  tiebreaker1, tiebreaker2) {
 		
@@ -341,13 +341,10 @@ function returnComp(a, b,  tiebreaker1, tiebreaker2) {
 
 
 function sortByStars(repos) {
-	function compare(a, b) {
-		return returnComp(a.starcount, b.starcount, a.issues.length, b.issues.length)
-        };
-
-        repos.sort(compare);
-        return repos;
+  repos.sort((a, b) => b.starcount - a.starcount);
+  return repos;
 }
+
 
 
 function sortBy(value, repositories) {
