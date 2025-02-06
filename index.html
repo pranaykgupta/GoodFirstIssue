@@ -66,7 +66,7 @@ border: 1px solid rgba(154, 161, 171, .15);
 }
 
 
-@-webkit-keyframes spin {
+@keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
@@ -105,8 +105,7 @@ border: 1px solid rgba(154, 161, 171, .15);
 display: none;
 }
 
-.welcome {
-}
+
 
 .welcome h1 {
     font-weight: 700;
@@ -135,12 +134,12 @@ display: none;
     line-height: 1.25;
     color: #464a4c;
     vertical-align: middle;
-    background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' v…'0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
+    background: #fff url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' v…'0 0 4 5'><path fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") no-repeat right .75rem center;
     -webkit-background-size: 8px 10px;
     background-size: 8px 10px;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
-    -moz-appearance: none;
+    appearance: none;
     -webkit-appearance: none;
 }
 
