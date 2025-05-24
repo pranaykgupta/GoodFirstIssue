@@ -194,12 +194,10 @@ cursor: url(hand.cur), pointer;
 		</div>
 	</div>
 
-	<div class="container search-body">
-  		<div class="row">
-				<div class = 'form-header'>
-				<form class="QueryParametersForm form-inline" onsubmit="onSubmitButton();return false;">
-						<select class="LanguageOptions form-control" onchange="onSubmitButton()">
-							<option>Choose Language</option>
+	<div style="display: flex; align-items: center; gap: 10px;justify-content: center;">
+  <select class="LanguageOptions" aria-label="Select programming language" style="padding: 8px 12px; font-size: 1rem;">
+    <option selected disabled>Choose a Language</option>
+   <option>Choose Language</option>
 							<option value="ActionScript">ActionScript</option>
 							<option value="C">C</option>
 							<option value="C#">C#</option>
@@ -225,33 +223,13 @@ cursor: url(hand.cur), pointer;
 							<option value="Swift">Swift</option>
 							<option value="TeX">TeX</option>
 							<option value="Vim script">Vim script</option>
-						</select>
-					</form>
-				</div>
+  </select>
 
-		<div class="table-responsive">
-		<div class="spinner"></div>
-		<table class="table hidden">
-			<col width="40%">
-			<col width="20%">
-			<col width="20%">
-			<col width="20%">
-			<thead>
-				<tr>
-				<th>Repository</th>
-				<th class="sortsTable" value="Good First Issue">Good First Issues</th>
-				<th class="sortsTable" value="Stars">Stars</th>
-				<th>Last Update</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		</div>
+  <button type="button" class="btn btn-primary" style="padding: 8px 16px; font-size: 1rem;">
+    +Add repo
+  </button>
+</div>
 
-		</div>
-		</div>
-	</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
