@@ -8,3 +8,6 @@ Contributing to open source helps you:
 - Learn git and GitHub in real-world  
 - Connect with mentors and projects  
 
+- [Affan Tarique](https://github.com/affanTarique)
+
+
