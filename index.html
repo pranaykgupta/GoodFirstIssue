@@ -1,112 +1,153 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
 
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-<!-- font awesome -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css"
+      integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-	<!-- bootstrap -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/css/bootstrap.min.css" integrity="sha512-fw7f+TcMjTb7bpbLJZlP8g2Y4XcCyFZW8uy8HsRZsH/SwbMw0plKHFHr99DN3l04VsYNwvzicUX/6qurvIxbxw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	
-<!-- styles -->
-<link rel="stylesheet" href="css/style.css">
-	</head>
+    <!-- styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
+  <body>
+    <p class="TopLabel">
+      <span class="IssueLabel GoodFirstIssue">Good First Issue</span>.com
+    </p>
 
-<body>
-<p class="TopLabel"><span class="IssueLabel GoodFirstIssue">Good First Issue</span>.com</p>
-	<div class="container-fluid hidden-sm-down">
-	<div class="row">
-	<div class="col-md-12 text-center QuestionsSuggestions">
-	<span class="news">Questions? Suggestions? <a class="center-block" target="_blank" href="https://twitter.com/messages/compose?recipient_id=966086645111025665">Send me a PM</a> on <i class="fa fa-twitter" aria-hidden="true"></i></span>
-	</div>
-	</div>
-	</div>
+    <header class="bg-light py-5 border-bottom mb-4">
+      <div class="container text-center">
+        <h1 class="display-5 fw-bold text-primary mb-3">
+          Find Great Open Source Opportunities
+        </h1>
+        <p class="lead text-muted mb-4">
+          Made for new contributors to find great Open Source projects.
+        </p>
+        <p class="mb-4">
+          Discover Issues and Repositories with:
+          <span class="badge bg-success me-1">Help Wanted</span>
+          <span class="badge bg-warning text-dark me-1">Starter Task</span>
+          <span class="badge bg-info text-dark">Good First Issue</span>
+        </p>
+        <div class="d-flex justify-content-center">
+          <a
+            class="btn btn-outline-dark"
+            target="_blank"
+            href="https://twitter.com/messages/compose?recipient_id=966086645111025665"
+          >
+            <i class="fab fa-twitter me-2"></i>Send me a PM on Twitter
+          </a>
+        </div>
+      </div>
+    </header>
 
-	<span class="octicon octicon-clippy"></span>
+    <main>
+      <span class="octicon octicon-clippy"></span>
 
-	
-	<div class="container welcome">
-		<div class="row">
-			<div class="col">
-			<h1>Find Great Open Source Opportunities.</h1>
-			<p class="lead">Made for new contributors to find great Open Source projects.</p>
-			<p>
-				Discover Issues and Repositories with 
-				<span class="IssueLabel HelpWanted">Help Wanted</span>
-				<span class="IssueLabel StarterTask">Starter Task</span>
-				<span class="IssueLabel GoodFirstIssue">Good First Issue</span>
-			</p>
-			</div>
-		</div>
-	</div>
+      <div class="container search-body">
+        <div class="row">
+          <div class="col-12 form-header">
+            <form
+              class="QueryParametersForm d-flex gap-2"
+              onsubmit="onSubmitButton(); return false;"
+            >
+              <label for="language-select" class="me-2">Language:</label>
+              <select
+                id="language-select"
+                class="LanguageOptions form-control"
+                onchange="onSubmitButton()"
+              >
+                <option>Choose Language</option>
+                <option value="ActionScript">ActionScript</option>
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+                <option value="C++">C++</option>
+                <option value="Clojure">Clojure</option>
+                <option value="CoffeeScript">CoffeeScript</option>
+                <option value="CSS">CSS</option>
+                <option value="Go">Go</option>
+                <option value="Haskell">Haskell</option>
+                <option value="HTML">HTML</option>
+                <option value="Java">Java</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Lua">Lua</option>
+                <option value="Matlab">Matlab</option>
+                <option value="Objective-C">Objective-C</option>
+                <option value="Perl">Perl</option>
+                <option value="PHP">PHP</option>
+                <option value="Python">Python</option>
+                <option value="R">R</option>
+                <option value="Ruby">Ruby</option>
+                <option value="Scala">Scala</option>
+                <option value="Shell">Shell</option>
+                <option value="Swift">Swift</option>
+                <option value="TeX">TeX</option>
+                <option value="Vim script">Vim script</option>
+              </select>
+            </form>
+          </div>
+        </div>
 
-
-	<div class="container search-body">
-  		<div class="row">
-				<div class = 'form-header'>
-				<form class="QueryParametersForm form-inline" onsubmit="onSubmitButton();return false;">
-						<select class="LanguageOptions form-control" onchange="onSubmitButton()">
-							<option>Choose Language</option>
-							<option value="ActionScript">ActionScript</option>
-							<option value="C">C</option>
-							<option value="C#">C#</option>
-							<option value="C++">C++</option>
-							<option value="Clojure">Clojure</option>
-							<option value="CoffeeScript">CoffeeScript</option>
-							<option value="CSS">CSS</option>
-							<option value="Go">Go</option>
-							<option value="Haskell">Haskell</option>
-							<option value="HTML">HTML</option>
-							<option value="Java">Java</option>
-							<option value="JavaScript">JavaScript</option>
-							<option value="Lua">Lua</option>
-							<option value="Matlab">Matlab</option>
-							<option value="Objective-C">Objective-C</option>
-							<option value="Perl">Perl</option>
-							<option value="PHP">PHP</option>
-							<option value="Python">Python</option>
-							<option value="R">R</option>
-							<option value="Ruby">Ruby</option>
-							<option value="Scala">Scala</option>
-							<option value="Shell">Shell</option>
-							<option value="Swift">Swift</option>
-							<option value="TeX">TeX</option>
-							<option value="Vim script">Vim script</option>
-						</select>
-					</form>
-				</div>
-
-		<div class="table-responsive">
-		<div class="spinner"></div>
-		<table class="table hidden">
-			<col width="40%">
-			<col width="20%">
-			<col width="20%">
-			<col width="20%">
-			<thead>
-				<tr>
-				<th>Repository</th>
-				<th class="sortsTable" value="Good First Issue">Good First Issues</th>
-				<th class="sortsTable" value="Stars">Stars</th>
-				<th>Last Update</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		</div>
-
-		</div>
-		</div>
-	</div>
-
-
-</body>
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <div class="spinner"></div>
+            <table class="table hidden">
+              <col width="40%" />
+              <col width="20%" />
+              <col width="20%" />
+              <col width="20%" />
+              <thead>
+                <tr>
+                  <th>Repository</th>
+                  <th class="sortsTable" value="Good First Issue">
+                    Good First Issues
+                  </th>
+                  <th class="sortsTable" value="Stars">Stars</th>
+                  <th>Last Update</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
 <script src="js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js" integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/all.min.js"
+  integrity="sha512-gBYquPLlR76UWqCwD06/xwal4so02RjIR0oyG1TIhSGwmBTRrIkQbaPehPF8iwuY9jFikDHMGEelt0DtY7jtvQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"
+  integrity="sha512-zKeerWHHuP3ar7kX2WKBSENzb+GJytFSBL6HrR2nPSR1kOX1qjm+oHooQtbDpDBSITgyl7QXZApvDfDWvKjkUw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
