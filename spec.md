@@ -1,27 +1,23 @@
+1. Return a list of repositories with a count of the number of issues for certain labels, and be able to sort by them. 
+2. Be able to receive notifications when new 'good-first issues' appear.
+3. Be able to create a list of repositories, bookmark them and add notes.
 
-Return a list of repositories with a count of the number of issues w/ certain labels, and be able to sort by them 
-notifications when new 'good-first issues' popup
-be able to make a list of repo's and save them/ bookmark them and add notes 
+Important variables : 
+1. Last pull request. 
+2. Number of stars. 
 
-important variables: last pull request, stars 
-an option to search for 'big company' repos.. ie facebook, linkedin, apple, etc ... or bonified orgs instead of isolated projects 
+An option to search for repositories from "well-known organisations" (Facebook, Linkedin, Apple, etc.) instead of isolated projects.
 
-current plan is to make multiple requests to filter what we need - how to do multiple async requests in javascript 
+Our Current plan is :
+1. To make multiple requests to the GitHub API to filter out the needed data.
+2. How to do multiple async requests in javascript.
 
-# look into cashing 
+# Look into caching 
 
-you could start an email list or notification scheme with new first-time issues, help wanted, etc 
+1. Implement an email list or notification scheme for new beginner-friendly issues (`good first issue`, `help wanted`, etc.).
+2. Create a GitHub-style newsletter to keep users updated.
+3. Encourage contributors to write articles to support the project.
 
-Github Newsletter sort of thing 
+Possible name: **GoodFirstIssue.com**
 
-get ppl to write articles for you 
-
-names: 
-GoodFirstIssue.com  
-
-
-what has changed since you last came - closed and open issues ? 
-
-
-
-
+Provide a summary of changes since the user’s last visit (e.g., opened or closed issues).
