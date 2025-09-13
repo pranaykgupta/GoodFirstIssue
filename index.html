@@ -18,6 +18,24 @@ body {
         background-color: rgba(250, 251, 254, 1.0);
 }
 
+.custom-navbar {
+	background-color: #5844c5;
+	padding: 20px;
+}
+
+.custom-navbar .navbar-brand {
+	font-weight: 800;
+	color: white !important;
+	font-size: clamp(18px, 3vw, 32px);
+}
+
+
+@media (min-width: 992px) {
+	.custom-navbar .navbar-brand {
+		margin-left: 150px;
+	}
+}
+
 .IssueLabel {
     height: 20px;
     padding: 0.15em 6px;
@@ -109,11 +127,14 @@ display: none;
 }
 
 .welcome h1 {
-    font-weight: 700;
+	margin: auto;
+    font-weight: 900;
+	font-size: 55px;
 }
 
+
 .lead {
-    margin-bottom: 0.775rem !important;
+    margin-top: 40px !important;
 }
 
 .form-header {
@@ -144,9 +165,9 @@ display: none;
     -webkit-appearance: none;
 }
 
-.QuestionsSuggestions  {
+.QuestionsSuggestions {
 	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	font-size: 0.8rem;
 }
 
@@ -176,7 +197,11 @@ cursor: url(hand.cur), pointer;
 </style>
 
 <body>
-     	<p class="TopLabel"><label class="IssueLabel GoodFirstIssue">Good First Issue</label>.com</p>
+	<nav class="navbar navbar-expand-lg custom-navbar">
+		<div>
+			<a class="navbar-brand">Good First Issue.com</a>		
+		</div>
+	</nav>
 	<div class="container-fluid hidden-sm-down">
 	<div class="row">
 	<div class="col-md-12 text-center QuestionsSuggestions">
