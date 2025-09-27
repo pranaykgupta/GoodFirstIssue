@@ -1,0 +1,24 @@
+/* Updated styling for the new Tip Box to match the dark theme */
+.tip-box {
+  background-color: #24292f; /* Darker background color */
+  border: 1px solid #444c56; /* Darker border color */
+  border-left: 5px solid #00b894; /* A green border on the left (you can keep this) */
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  max-width: 400px; 
+}
+
+.tip-box h4 {
+  font-size: 1.1rem;
+  color: #c9d1d9; /* Lighter text color for readability */
+  margin-top: 0;
+}
+
+.tip-box p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #8b949e; /* Lighter text color */
+}
