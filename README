@@ -1,0 +1,15 @@
+# GoodFirstIssue
+
+A website to help beginners find **good first issues** and repositories to contribute to in open source.
+
+## 🌱 About this project
+This repository is designed to guide beginners in contributing to open source.  
+It lists repositories and issues labeled as **Good First Issue**, making it easy for newcomers to get started.
+
+This project is ideal for Hacktoberfest participants and anyone looking to make their first contribution.
+
+## 🛠 How to contribute
+1. Fork this repository.
+2. Create a new branch for your changes:
+   ```bash
+   git checkout -b your-branch-name
