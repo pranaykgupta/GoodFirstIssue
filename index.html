@@ -71,6 +71,11 @@ border: 1px solid rgba(154, 161, 171, .15);
   100% { -webkit-transform: rotate(360deg); }
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .btn-primary {
     color: #fff;
     background-color: #0073e6;
@@ -105,8 +110,7 @@ border: 1px solid rgba(154, 161, 171, .15);
 display: none;
 }
 
-.welcome {
-}
+
 
 .welcome h1 {
     font-weight: 700;
@@ -126,7 +130,6 @@ display: none;
 	margin-top: 8px;
 	margin-left: 8px;
 }
-
 .custom-select {
     display: inline-block;
     max-width: 100%;
@@ -135,15 +138,15 @@ display: none;
     line-height: 1.25;
     color: #464a4c;
     vertical-align: middle;
-    background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' v…'0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
     -webkit-background-size: 8px 10px;
     background-size: 8px 10px;
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
     -moz-appearance: none;
     -webkit-appearance: none;
+    appearance: none;
 }
-
 .QuestionsSuggestions  {
 	margin-top: 1rem;
 	margin-bottom: 1rem;
