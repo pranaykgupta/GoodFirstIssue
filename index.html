@@ -1,683 +1,838 @@
 <!doctype html>
-<html>
-	<head>
-	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
-	</head>
-<style>
-
-body {
-        background-color: rgba(250, 251, 254, 1.0);
-}
-
-.IssueLabel {
-    height: 20px;
-    padding: 0.15em 6px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 15px;
-    border-radius: 2px;
-    box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12);
-}
-
-.GoodFirstIssue {
-	background-color: #7057ff;
-	color: #ffffff;
-}
-
-.StarterTask {
-    background-color: #62dbc9;
-    color: #000000;
-}
-
-.HelpWanted {
-    background-color: #008672;
-    color: #ffffff;
-}
-
-.search-body {
-background-color: #ffffff;
-box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
-border: 1px solid rgba(154, 161, 171, .15);
-}
-
-
-.spinner {
-  display: none;
-  position: absolute;
-  left: 50%;
-  z-index: 1;
-  width: 120px;
-  height: 120px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #7057ff;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #0073e6;
-    border-color: #0073e6;
-}
-
-.btn {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.25;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    border-radius: .25rem;
-}
-
-.welcome {
-    margin-bottom: 2rem;
-    margin-top: 1.5rem;
-    font-family: 'Lato', sans-serif;
-}
-
-
-.hidden {
-display: none;
-}
-
-.welcome {
-}
-
-.welcome h1 {
-    font-weight: 700;
-}
-
-.lead {
-    margin-bottom: 0.775rem !important;
-}
-
-.form-header {
-	margin-left: 15px;
-	margin-top: 0.75rem;
-	margin-bottom: 2rem;
-}
-
-.TopLabel {
-	margin-top: 8px;
-	margin-left: 8px;
-}
-
-.custom-select {
-    display: inline-block;
-    max-width: 100%;
-    height: calc(2.25rem + 2px);
-    padding: .375rem 1.75rem .375rem .75rem;
-    line-height: 1.25;
-    color: #464a4c;
-    vertical-align: middle;
-    background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' v…'0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
-    -webkit-background-size: 8px 10px;
-    background-size: 8px 10px;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-}
-
-.QuestionsSuggestions  {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	font-size: 0.8rem;
-}
-
-.text-muted {
-color: #636c72;
-margin-bottom: 0px;
-font-weight: 300;
-font-size: 90%;
-margin-right: 6px;
-}
-
-.paddedLeftMargin {
-margin-left: 25px;
-}
-
-#submit {
-margin-left: 25px;
-width: 300px;
-}
-
-.sortsTable:hover {
-color: #7057ff;
-cursor: url(hand.cur), pointer;
-}
-
-
-</style>
-
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>GoodFirstIssue.com - Find Great Open Source Opportunities</title>
+    
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <style>
+        :root {
+            --primary-color: #7057ff;
+            --secondary-color: #0073e6;
+            --good-first-issue: #7057ff;
+            --starter-task: #62dbc9;
+            --help-wanted: #008672;
+            --light-bg: rgba(250, 251, 254, 1.0);
+            --card-shadow: 0 0 35px 0 rgba(154, 161, 171, .15);
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Lato', sans-serif;
+        }
+        
+        .IssueLabel {
+            height: 20px;
+            padding: 0.15em 6px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 15px;
+            border-radius: 2px;
+            box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12);
+        }
+        
+        .GoodFirstIssue {
+            background-color: var(--good-first-issue);
+            color: #ffffff;
+        }
+        
+        .StarterTask {
+            background-color: var(--starter-task);
+            color: #000000;
+        }
+        
+        .HelpWanted {
+            background-color: var(--help-wanted);
+            color: #ffffff;
+        }
+        
+        .search-body {
+            background-color: #ffffff;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(154, 161, 171, .15);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .spinner {
+            display: none;
+            position: absolute;
+            left: 50%;
+            z-index: 1;
+            width: 120px;
+            height: 120px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid var(--primary-color);
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+        
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn-primary {
+            color: #fff;
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .welcome {
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .welcome h1 {
+            font-weight: 700;
+        }
+        
+        .lead {
+            margin-bottom: 0.775rem !important;
+        }
+        
+        .form-header {
+            margin-bottom: 2rem;
+        }
+        
+        .TopLabel {
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+        
+        .QuestionsSuggestions {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+        }
+        
+        .text-muted {
+            color: #636c72;
+            margin-bottom: 0px;
+            font-weight: 300;
+            font-size: 90%;
+            margin-right: 6px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .sortsTable:hover {
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .table-responsive {
+            min-height: 300px;
+        }
+        
+        .repo-link {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .filter-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .results-info {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .pagination-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6c757d;
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #dee2e6;
+        }
+        
+        .token-setup {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .welcome h1 {
+                font-size: 1.8rem;
+            }
+            
+            .table-responsive {
+                font-size: 0.85rem;
+            }
+            
+            .filter-section .form-group {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
 <body>
-     	<p class="TopLabel"><label class="IssueLabel GoodFirstIssue">Good First Issue</label>.com</p>
-	<div class="container-fluid hidden-sm-down">
-	<div class="row">
-	<div class="col-md-12 text-center QuestionsSuggestions">
-	<span class="news">Questions? Suggestions? <a class="center-block" target="_blank" href="https://twitter.com/messages/compose?recipient_id=966086645111025665">Send me a PM</a> on <i class="fa fa-twitter" aria-hidden="true"></i></span>
-	</div>
-	</div>
-	</div>
+    <p class="TopLabel"><label class="IssueLabel GoodFirstIssue">Good First Issue</label>.com</p>
+    
+    <div class="container-fluid hidden-sm-down">
+        <div class="row">
+            <div class="col-md-12 text-center QuestionsSuggestions">
+                <span class="news">Questions? Suggestions? 
+                    <a class="center-block" target="_blank" href="https://twitter.com/messages/compose?recipient_id=966086645111025665">
+                        Send me a PM
+                    </a> on <i class="fa fa-twitter" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div>
 
-	<span class="octicon octicon-clippy"></span>
-	<div class="container welcome">
-		<div class="row d-block">
-		<h1>Find Great Open Source Opportunities.</h1>
-		<p class="lead">Made for new contributors to find great Open Source projects.</p>
-		<p>Discover Issues and Repositories with <label class="IssueLabel HelpWanted">Help Wanted</label> <label class="IssueLabel StarterTask">Starter Task</label> and <Label class="IssueLabel GoodFirstIssue">Good First Issue</label> labels. </p>
-		</div>
-	</div>
+    <div class="container welcome">
+        <div class="row d-block">
+            <h1>Find Great Open Source Opportunities</h1>
+            <p class="lead">Made for new contributors to find great Open Source projects.</p>
+            <p>Discover Issues and Repositories with 
+                <label class="IssueLabel HelpWanted">Help Wanted</label> 
+                <label class="IssueLabel StarterTask">Starter Task</label> and 
+                <Label class="IssueLabel GoodFirstIssue">Good First Issue</label> labels. 
+            </p>
+        </div>
+    </div>
 
-	<div class="container search-body">
-  		<div class="row">
-				<div class = 'form-header'>
-				<form class="QueryParametersForm form-inline" onsubmit="onSubmitButton();return false;">
-						<select class="LanguageOptions form-control" onchange="onSubmitButton()">
-							<option>Choose Language</option>
-							<option value="ActionScript">ActionScript</option>
-							<option value="C">C</option>
-							<option value="C#">C#</option>
-							<option value="C++">C++</option>
-							<option value="Clojure">Clojure</option>
-							<option value="CoffeeScript">CoffeeScript</option>
-							<option value="CSS">CSS</option>
-							<option value="Go">Go</option>
-							<option value="Haskell">Haskell</option>
-							<option value="HTML">HTML</option>
-							<option value="Java">Java</option>
-							<option value="JavaScript">JavaScript</option>
-							<option value="Lua">Lua</option>
-							<option value="Matlab">Matlab</option>
-							<option value="Objective-C">Objective-C</option>
-							<option value="Perl">Perl</option>
-							<option value="PHP">PHP</option>
-							<option value="Python">Python</option>
-							<option value="R">R</option>
-							<option value="Ruby">Ruby</option>
-							<option value="Scala">Scala</option>
-							<option value="Shell">Shell</option>
-							<option value="Swift">Swift</option>
-							<option value="TeX">TeX</option>
-							<option value="Vim script">Vim script</option>
-						</select>
-					</form>
-				</div>
+    <div class="container">
+        <div class="token-setup">
+            <h5><i class="fa fa-key" aria-hidden="true"></i> GitHub Token Setup Required</h5>
+            <p class="mb-2">To use this application, you need to:</p>
+            <ol class="mb-2">
+                <li>Create a GitHub Personal Access Token with <code>public_repo</code> scope</li>
+                <li>Replace the token in the JavaScript code (line ~350)</li>
+                <li><a href="https://github.com/settings/tokens/new" target="_blank">Create your token here</a></li>
+            </ol>
+            <small class="text-muted">Your token is stored locally and only used to access GitHub's public API</small>
+        </div>
+    </div>
 
-		<div class="table-responsive">
-		<div class="spinner"></div>
-		<table class="table hidden">
-			<col width="40%">
-			<col width="20%">
-			<col width="20%">
-			<col width="20%">
-			<thead>
-				<tr>
-				<th>Repository</th>
-				<th class="sortsTable" value="Good First Issue">Good First Issues</th>
-				<th class="sortsTable" value="Stars">Stars</th>
-				<th>Last Update</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		</div>
+    <div class="container search-body">
+        <div class="filter-section">
+            <form class="QueryParametersForm" onsubmit="onSubmitButton(); return false;">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="languageSelect">Programming Language</label>
+                        <select class="LanguageOptions form-control" id="languageSelect" onchange="onSubmitButton()">
+                            <option value="">Choose Language</option>
+                            <option value="ActionScript">ActionScript</option>
+                            <option value="C">C</option>
+                            <option value="C#">C#</option>
+                            <option value="C++">C++</option>
+                            <option value="Clojure">Clojure</option>
+                            <option value="CoffeeScript">CoffeeScript</option>
+                            <option value="CSS">CSS</option>
+                            <option value="Go">Go</option>
+                            <option value="Haskell">Haskell</option>
+                            <option value="HTML">HTML</option>
+                            <option value="Java">Java</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Lua">Lua</option>
+                            <option value="Matlab">Matlab</option>
+                            <option value="Objective-C">Objective-C</option>
+                            <option value="Perl">Perl</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Python">Python</option>
+                            <option value="R">R</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="Scala">Scala</option>
+                            <option value="Shell">Shell</option>
+                            <option value="Swift">Swift</option>
+                            <option value="TeX">TeX</option>
+                            <option value="Vim script">Vim script</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sortSelect">Sort By</label>
+                        <select class="SortOptions form-control" id="sortSelect" onchange="onSortChange()">
+                            <option value="Good First Issue">Good First Issues (Most)</option>
+                            <option value="Stars">Stars (Most)</option>
+                            <option value="Recently Updated">Recently Updated</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="resultsPerPage">Results Per Page</label>
+                        <select class="ResultsPerPage form-control" id="resultsPerPage" onchange="onSubmitButton()">
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="error-message" id="errorMessage">
+                An error occurred while fetching data. Please check your internet connection and try again.
+            </div>
+        </div>
+        
+        <div class="results-info" id="resultsInfo"></div>
+        
+        <div class="table-responsive">
+            <div class="spinner" id="loadingSpinner"></div>
+            
+            <div class="empty-state" id="emptyState">
+                <i class="fa fa-code-fork" aria-hidden="true"></i>
+                <h4>No repositories found</h4>
+                <p>Select a programming language to find open source opportunities</p>
+            </div>
+            
+            <table class="table hidden" id="resultsTable">
+                <col width="40%">
+                <col width="20%">
+                <col width="20%">
+                <col width="20%">
+                <thead>
+                    <tr>
+                        <th>Repository</th>
+                        <th class="sortsTable" data-sort="Good First Issue">Good First Issues</th>
+                        <th class="sortsTable" data-sort="Stars">Stars</th>
+                        <th class="sortsTable" data-sort="Recently Updated">Last Update</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+            
+            <div class="pagination-container" id="paginationContainer"></div>
+        </div>
+    </div>
 
-		</div>
-		</div>
-	</div>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
-</html>
-
-<script>
-
-
-var searchIssuesQuery  = `
-query SearchIssues($query:String!, $after: String) {
-  search(query:$query, type:ISSUE, first: 100, after: $after) {
-    edges {
-    	node {
-        ... on Issue {
-         repository {
-	   owner {
-		login
-	   },
-	   updatedAt,
-	   url,
-	updatedAt,
-           name,
-	   stargazers {
-		totalCount
-         	},
-           },
-           url,
-	   createdAt,
-        }
-      }
-    }
-
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
-
-`
-
-
-class RepositoryContainer {
-        constructor(issue) {
-                this.owner = issue.repository.owner.login
-                this.name = issue.repository.name
-                this.starcount = issue.repository.stargazers.totalCount
-                this.issues = [ issue ]
-                this.url = issue.repository.url
-                this.updatedAt = issue.repository.updatedAt
-        }
-
-        addIssue(issue) {
-                this.issues.push(issue);
-        }
-}
-
-function sortByGoodFirstIssues(repos) {
-
-       function compare(a, b) {
-           return returnComp(a.issues.length, b.issues.length, a.starcount, b.starcount) 
-	};
-
-
-        repos.sort(compare);
-	return repos; 
-}
-
-function returnComp(a, b,  tiebreaker1, tiebreaker2) {
-		
-
-	if (a > b) {
-            return -1;          
-        } else if (b > a) {
-            return 1;
-       	} else if (tiebreaker1 > tiebreaker2) {
-	    return -1 
-	} else if (tiebreaker2 > tiebreaker1) {
-	    return 1; 
-	}
-
-	return 0
-}
-
-
-function sortByStars(repos) {
-	function compare(a, b) {
-		return returnComp(a.starcount, b.starcount, a.issues.length, b.issues.length)
-        };
-
-        repos.sort(compare);
-        return repos;
-}
-
-
-function sortBy(value, repositories) {
-
-	switch (value) {
-
-                case "Good First Issue":
-                       	return sortByGoodFirstIssues(repositories); 
-			break;
-
-                case "Stars":
-			return sortByStars(repositories); 
-                        break; 
-
-        }
-
-}
-
-
-function addSlashes(string) {
-	var slash = "\"";
-	return slash + string + slash
-}
-
-
-function makeIssuesQuery(language, label, endCursor) {
-	return {
-		query:
-			"label:" + addSlashes(label) + " language:" + language + " " + "state:open",
-			"after": endCursor,
-	}
-}
-
-
-function getHTMLParameters() {
-	// get language
-	var langOptions = $(".LanguageOptions")[0];
-	var selectedLanguage = langOptions[langOptions.selectedIndex].value
-		console.log(selectedLanguage);
-	// get labels
-
-	return {
-		language: selectedLanguage
-	}
-
-}
-
-
-function daysBetweenDates(date1, date2) {
-	var oneDay = 24*60*60*1000;	// hours*minutes*seconds*milliseconds
-	var diffDays = Math.round((date2-date1)/oneDay);
-	return diffDays;
-}
-
-
-function afterDateLimit(date, todaysDate, monthLimit) {
-	var dayLimit = monthLimit * 30;
-	var daysBtwn =  daysBetweenDates(date, todaysDate);
-	return daysBtwn >= dayLimit
-}
-
-
-function isUndefined(object) {
-	return (typeof object === "undefined");
-}
-
-
-function createContainers(issues, repoDict, repoNameDict) {
-        issues.forEach(i=>{
-		if (isUndefined(i)) { return; };
-		if (isUndefined(i.repository)) { return; }
-		var name = i.repository.name
-
-                if (isUndefined(repoNameDict[name])) {
-                        repoNameDict[name] = name;
-                        var container = new RepositoryContainer(i);
-			repoDict[name] = container;
-                } else {
-                        repoDict[name].addIssue(i);
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+    <script>
+        // Configuration
+        // ⚠️ REPLACE THIS WITH YOUR ACTUAL GITHUB TOKEN ⚠️
+        const GITHUB_TOKEN = 'ghp_your_actual_token_here'; // Replace with your GitHub token
+        
+        const ISSUE_LABELS = ["good first issue", "starter-task", "help wanted"];
+        const RESULTS_PER_PAGE_OPTIONS = [10, 25, 50, 100];
+        
+        // State management
+        let currentRepositories = [];
+        let currentPage = 1;
+        let currentSort = 'Good First Issue';
+        let currentLanguage = '';
+        
+        // GraphQL Query
+        const searchIssuesQuery = `
+            query SearchIssues($query:String!, $after: String) {
+                search(query:$query, type:ISSUE, first: 100, after: $after) {
+                    edges {
+                        node {
+                            ... on Issue {
+                                repository {
+                                    owner {
+                                        login
+                                    },
+                                    updatedAt,
+                                    url,
+                                    name,
+                                    stargazers {
+                                        totalCount
+                                    },
+                                },
+                                url,
+                                createdAt,
+                            }
+                        }
+                    }
+                    pageInfo {
+                        endCursor
+                        hasNextPage
+                    }
                 }
-	});
+            }
+        `;
+        
+        // Repository Container Class
+        class RepositoryContainer {
+            constructor(issue) {
+                this.owner = issue.repository.owner.login;
+                this.name = issue.repository.name;
+                this.starcount = issue.repository.stargazers.totalCount;
+                this.issues = [issue];
+                this.url = issue.repository.url;
+                this.updatedAt = issue.repository.updatedAt;
+            }
 
-	var arrayvalues = new Array();
+            addIssue(issue) {
+                this.issues.push(issue);
+            }
+        }
+        
+        // Utility Functions
+        function isUndefined(object) {
+            return (typeof object === "undefined");
+        }
+        
+        function daysBetweenDates(date1, date2) {
+            const oneDay = 24 * 60 * 60 * 1000;
+            return Math.round((date2 - date1) / oneDay);
+        }
+        
+        function afterDateLimit(date, todaysDate, monthLimit) {
+            const dayLimit = monthLimit * 30;
+            const daysBtwn = daysBetweenDates(date, todaysDate);
+            return daysBtwn >= dayLimit;
+        }
+        
+        function formatUpdatedAtDate(updatedAt) {
+            const date = new Date(updatedAt);
+            const monthNames = [
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            ];
 
-	for (var key in repoDict) {
-    		arrayvalues.push(repoDict[key]);
-	}
+            const day = date.getDate();
+            const monthIndex = date.getMonth();
+            const year = date.getFullYear();
 
-	return arrayvalues
-}
-
-
-function createTable(issues) {
-	console.log("***** create table called ****");
- 	var repoNameDict = {};
-        var repoDict = {};
-	var body = document.getElementsByTagName("body")[0];
-	var allRepositories = createContainers(issues, repoDict, repoNameDict);
-
-	sortByGoodFirstIssues(allRepositories); 
-	makeTableFromRepos(allRepositories); 
-	return allRepositories 
-};
-
-
-function makeTableFromRepos(repositories) {
-     makeTableElement(); 	
-     repositories.forEach(i=>{
-         var row = insertIntoTableElement(i.owner, i.name, i.url, i.issues.length, i.starcount, i.updatedAt);
-         $('table tbody')[0].appendChild(row);
-     })
-}
-
-
-function removeRows(table) {
-	$('table tbody tr').remove();
-}
-
-
-function makeTableElement() {
-
-        // create elements <table> and a <tbody>
-        var table = $('table')[0];
-	table.classList.remove('hidden');
-	removeRows(table);
-}
-
-
-function appendCell(row, text) {
-	var cell = document.createElement("td");
-	var celltext = document.createTextNode(text);
-	cell.appendChild(celltext);
-	row.appendChild(cell);
-}
-
-
-function formatNameCell(repoOwnerLogin, repoName, url, row) {
-	var cell = document.createElement("td");
-	var span = document.createElement("span");
-	var a = document.createElement("a");
-	var loginText = document.createTextNode(repoOwnerLogin + " / ");
-	var repoNameText = document.createTextNode(repoName);
-
-	a.appendChild(loginText);
-	$(a).attr("href", url);
-	$(a).attr("target", "_blank");
-	a.classList.add("ownerLoginText");
-	a.appendChild(repoNameText);
-
-	cell.appendChild(a);
-	row.appendChild(cell);
-}
-
-
-function formatUpdatedAtDate(updatedAt) {
-  var date = new Date(updatedAt);
-  var monthNames = [
-   	 "Jan", "Feb", "May",
-   	 "Apr", "May", "June", "July",
-   	 "Aug", "Sept", "Oct",
-   	 "Nov", "Dec"
-  ];
-
-  var day = date.getDate();
-  var monthIndex = date.getMonth();
-  var year = date.getFullYear();
-
-  return monthNames[monthIndex] +  ' ' + day + ' ' + year;
-}
-
-
-function appendStarCell(row, stars) {
-	var cell = document.createElement("td");
-	var starSVG = starSVGIcon();
-	var p1 = "<p>";
-	var p2 = "</p>";
-	var space = " ";
-	$(cell).html(p1 + starSVG + space + stars + p2);
-        row.appendChild(cell);
-}
-
-
-function insertIntoTableElement(repoOwnerLogin, repoName, url,  issueCount, stars, updatedAt) {
-	var row = document.createElement("tr");
-	formatNameCell(repoOwnerLogin, repoName, url, row);
-	appendCell(row, issueCount);
-	appendStarCell(row, stars);
-	appendCell(row, formatUpdatedAtDate(updatedAt));
-	return row;
-}
-
-
-function throwLoading(spinner) {
-	spinner.css("display", "block");
-	console.log("throwing loading spinner");
-}
-
-
-function stopLoadingSpinner(spinner, time) {
-
-	function stopLoading() {
-		spinner.css("display", "none");
-	}
-
-	console.log(time);
-	var now = new Date().getTime();
-	console.log(now);
-	var interval = new Date().getTime() - time
-	console.log(interval);
-	spinner.css("display", "none");
-}
-
-function starSVGIcon() {
-	return '<svg aria-label="star" style="margin-top: -5px" viewBox="0 0 14 16" version="1.1" width="14" height="16" role="img"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>'
-}
-
-
-
-function onSubmitButton() {
-
-	var parameters = getHTMLParameters();
-	if (parameters.language == "") {
-		return;
-	}
-
-	var time = new Date().getTime()
-	var spinner = $('.spinner')
-	throwLoading(spinner);
-	var fetchCount = 0;
-	var labels = ["easy contribution", "good first issue", "starter-task"];
-	var todaysDate = new Date();
-	var issuesFetched = [];
-	var uniqueRepositories = []
-	var labelIndex = 0;
-
-	function setupSortMech(repos) {
-		$(".sortsTable").click(function() {
-			console.log("seen ");	
-                	var value = $(this).attr('value');
-			var sortedRepos = sortBy(value, repos); 
-			makeTableFromRepos(sortedRepos); 
-		});
-
-	}
-
-	function finishedFetchingRepos() {
-		console.log("finished " + issuesFetched.length);
-                stopLoadingSpinner(spinner, new Date().getTime());
-                console.log("finished " + issuesFetched.length);
-                var repos = createTable(issuesFetched);
-		setupSortMech(repos); 
-	}
-
-	function makeQuery(endCursor) {
-		var query = makeIssuesQuery(parameters.language, labels[labelIndex], endCursor);
-		fetchQuery(searchIssuesQuery, query, handleData );
-	}
-
-	function fetchNextPage(fetchCount, pageInfo) {
-		 // { "query": "label:\"good first issue\" ", "after": "Y3Vyc29yOjg="}
-		fetchCount += 1;
-		makeQuery(pageInfo.endCursor)
-	}
-
-	function fetchNextLabel() {
-             labelIndex += 1;
-             if (labelIndex >= labels.length) {
-                     finishedFetchingRepos(); 
-	     } else {
-                     makeQuery();
-             }
-	}
-
-	function handleData(data) {
-
-		if (data == null || data.data == null) {
-			fetchNextLabel();
-			return;
-		}
-
-		var issues = data.data.search.edges.map(edge=>{ return edge.node  });
-		console.log(issues.length);
-		issuesFetched = issuesFetched.concat(issues);
-		console.log(issuesFetched.length);
-		var pageInfo = data.data.search.pageInfo;
-
-		var i = 0;
-
-		for (i = issues.length; i >= 0; i--) {
-			if (isUndefined(issues[i])) {
-				issues.splice(i, 1);
-			}
-		}
-
-		if (issues.length == 0) {
-			fetchNextLabel();
-		} else if (pageInfo.hasNextPage && !afterDateLimit( new Date(issues[issues.length - 1].createdAt ), todaysDate, 4)) {
-			fetchNextPage(fetchCount, pageInfo);
-		} else {
-			fetchNextLabel();
-		}
-	}
-
-	makeQuery();
-}
-
-
-function fetchQuery(query, variables, callback)  {
-	//https://graphql.org/graphql-js/graphql-clients/
-
-	var body = JSON.stringify({
+            return `${monthNames[monthIndex]} ${day}, ${year}`;
+        }
+        
+        function starSVGIcon() {
+            return '<svg aria-label="star" style="margin-top: -5px" viewBox="0 0 14 16" version="1.1" width="14" height="16" role="img"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>';
+        }
+        
+        // Sorting Functions
+        function returnComp(a, b, tiebreaker1, tiebreaker2) {
+            if (a > b) {
+                return -1;
+            } else if (b > a) {
+                return 1;
+            } else if (tiebreaker1 > tiebreaker2) {
+                return -1;
+            } else if (tiebreaker2 > tiebreaker1) {
+                return 1;
+            }
+            return 0;
+        }
+        
+        function sortByGoodFirstIssues(repos) {
+            function compare(a, b) {
+                return returnComp(a.issues.length, b.issues.length, a.starcount, b.starcount);
+            }
+            return repos.sort(compare);
+        }
+        
+        function sortByStars(repos) {
+            function compare(a, b) {
+                return returnComp(a.starcount, b.starcount, a.issues.length, b.issues.length);
+            }
+            return repos.sort(compare);
+        }
+        
+        function sortByRecentlyUpdated(repos) {
+            function compare(a, b) {
+                return new Date(b.updatedAt) - new Date(a.updatedAt);
+            }
+            return repos.sort(compare);
+        }
+        
+        function sortRepositories(repositories, sortBy) {
+            switch (sortBy) {
+                case "Good First Issue":
+                    return sortByGoodFirstIssues(repositories);
+                case "Stars":
+                    return sortByStars(repositories);
+                case "Recently Updated":
+                    return sortByRecentlyUpdated(repositories);
+                default:
+                    return repositories;
+            }
+        }
+        
+        // UI Functions
+        function showLoadingSpinner() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+        }
+        
+        function hideLoadingSpinner() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+        }
+        
+        function showError(message) {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = message || 'An error occurred while fetching data.';
+            errorElement.style.display = 'block';
+        }
+        
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+        
+        function showEmptyState() {
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('resultsTable').classList.add('hidden');
+        }
+        
+        function hideEmptyState() {
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('resultsTable').classList.remove('hidden');
+        }
+        
+        function updateResultsInfo(totalRepositories, currentPage, resultsPerPage) {
+            const startIndex = (currentPage - 1) * resultsPerPage + 1;
+            const endIndex = Math.min(currentPage * resultsPerPage, totalRepositories);
+            const infoText = totalRepositories > 0 
+                ? `Showing ${startIndex}-${endIndex} of ${totalRepositories} repositories` 
+                : 'No repositories found';
+            
+            document.getElementById('resultsInfo').textContent = infoText;
+        }
+        
+        // Table Functions
+        function createContainers(issues, repoDict, repoNameDict) {
+            issues.forEach(issue => {
+                if (isUndefined(issue) || isUndefined(issue.repository)) return;
+                
+                const name = issue.repository.name;
+                if (isUndefined(repoNameDict[name])) {
+                    repoNameDict[name] = name;
+                    const container = new RepositoryContainer(issue);
+                    repoDict[name] = container;
+                } else {
+                    repoDict[name].addIssue(issue);
+                }
+            });
+            
+            return Object.values(repoDict);
+        }
+        
+        function clearTable() {
+            document.getElementById('tableBody').innerHTML = '';
+        }
+        
+        function appendCell(row, text) {
+            const cell = document.createElement('td');
+            cell.textContent = text;
+            row.appendChild(cell);
+        }
+        
+        function formatNameCell(repoOwnerLogin, repoName, url, row) {
+            const cell = document.createElement('td');
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            link.className = 'repo-link';
+            link.textContent = `${repoOwnerLogin} / ${repoName}`;
+            cell.appendChild(link);
+            row.appendChild(cell);
+        }
+        
+        function appendStarCell(row, stars) {
+            const cell = document.createElement('td');
+            const starIcon = starSVGIcon();
+            cell.innerHTML = `${starIcon} ${stars}`;
+            row.appendChild(cell);
+        }
+        
+        function createTableRow(repository) {
+            const row = document.createElement('tr');
+            formatNameCell(repository.owner, repository.name, repository.url, row);
+            appendCell(row, repository.issues.length);
+            appendStarCell(row, repository.starcount);
+            appendCell(row, formatUpdatedAtDate(repository.updatedAt));
+            return row;
+        }
+        
+        function renderTable(repositories, currentPage, resultsPerPage) {
+            clearTable();
+            const tableBody = document.getElementById('tableBody');
+            
+            const startIndex = (currentPage - 1) * resultsPerPage;
+            const endIndex = startIndex + resultsPerPage;
+            const pageRepositories = repositories.slice(startIndex, endIndex);
+            
+            pageRepositories.forEach(repo => {
+                tableBody.appendChild(createTableRow(repo));
+            });
+            
+            updateResultsInfo(repositories.length, currentPage, resultsPerPage);
+        }
+        
+        // Pagination Functions
+        function createPagination(totalRepositories, currentPage, resultsPerPage) {
+            const totalPages = Math.ceil(totalRepositories / resultsPerPage);
+            if (totalPages <= 1) return '';
+            
+            let paginationHTML = '<nav><ul class="pagination">';
+            
+            // Previous button
+            if (currentPage > 1) {
+                paginationHTML += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${currentPage - 1})">Previous</a></li>`;
+            } else {
+                paginationHTML += `<li class="page-item disabled"><span class="page-link">Previous</span></li>`;
+            }
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `<li class="page-item active"><span class="page-link">${i}</span></li>`;
+                } else {
+                    paginationHTML += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${i})">${i}</a></li>`;
+                }
+            }
+            
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHTML += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${currentPage + 1})">Next</a></li>`;
+            } else {
+                paginationHTML += `<li class="page-item disabled"><span class="page-link">Next</span></li>`;
+            }
+            
+            paginationHTML += '</ul></nav>';
+            return paginationHTML;
+        }
+        
+        function renderPagination(totalRepositories, currentPage, resultsPerPage) {
+            const paginationContainer = document.getElementById('paginationContainer');
+            paginationContainer.innerHTML = createPagination(totalRepositories, currentPage, resultsPerPage);
+        }
+        
+        function changePage(page) {
+            currentPage = page;
+            const resultsPerPage = parseInt(document.getElementById('resultsPerPage').value);
+            renderTable(currentRepositories, currentPage, resultsPerPage);
+            renderPagination(currentRepositories.length, currentPage, resultsPerPage);
+        }
+        
+        // Data Fetching Functions
+        function addSlashes(string) {
+            return `"${string}"`;
+        }
+        
+        function makeIssuesQuery(language, label, endCursor) {
+            return {
+                query: `label:${addSlashes(label)} language:${language} state:open`,
+                after: endCursor,
+            };
+        }
+        
+        function getHTMLParameters() {
+            const languageSelect = document.getElementById('languageSelect');
+            return {
+                language: languageSelect.value,
+                resultsPerPage: parseInt(document.getElementById('resultsPerPage').value),
+                sortBy: document.getElementById('sortSelect').value
+            };
+        }
+        
+        function fetchQuery(query, variables) {
+            if (!GITHUB_TOKEN || GITHUB_TOKEN === 'ghp_your_actual_token_here') {
+                showError('Please set up a GitHub API token in the code to use this application.');
+                return Promise.reject('No GitHub token');
+            }
+            
+            const body = JSON.stringify({
                 query,
                 variables: variables,
-	});
-
-
-	fetch('https://api.github.com/graphql',
-	{
-        	method: 'POST',
-        	headers: {
-                	'Content-Type': 'application/json',
-                	'Accept': 'application/json',
-                	'Authorization': 'Bearer' + ' ' + token,
-        	},
-        	body: body
-
-	}).then(r => r.json()).then(data => {
-    		callback(data);
-	});
-}
-
-
-</script>
+            });
+            
+            return fetch('https://api.github.com/graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                },
+                body: body
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.errors) {
+                    throw new Error(data.errors[0].message);
+                }
+                return data;
+            });
+        }
+        
+        // Main Function
+        function onSubmitButton() {
+            const parameters = getHTMLParameters();
+            if (!parameters.language) {
+                showError('Please select a programming language');
+                return;
+            }
+            
+            hideError();
+            showLoadingSpinner();
+            hideEmptyState();
+            
+            currentLanguage = parameters.language;
+            currentPage = 1;
+            currentSort = parameters.sortBy;
+            
+            const time = new Date().getTime();
+            const todaysDate = new Date();
+            let issuesFetched = [];
+            let labelIndex = 0;
+            
+            function makeQuery(endCursor) {
+                const query = makeIssuesQuery(parameters.language, ISSUE_LABELS[labelIndex], endCursor);
+                return fetchQuery(searchIssuesQuery, query);
+            }
+            
+            function handleData(data, fetchCount) {
+                if (!data || !data.data) {
+                    fetchNextLabel();
+                    return;
+                }
+                
+                const issues = data.data.search.edges.map(edge => edge.node);
+                issuesFetched = issuesFetched.concat(issues);
+                const pageInfo = data.data.search.pageInfo;
+                
+                // Filter out undefined issues
+                for (let i = issues.length - 1; i >= 0; i--) {
+                    if (isUndefined(issues[i])) {
+                        issues.splice(i, 1);
+                    }
+                }
+                
+                if (issues.length === 0) {
+                    fetchNextLabel();
+                } else if (pageInfo.hasNextPage && 
+                          !afterDateLimit(new Date(issues[issues.length - 1].createdAt), todaysDate, 4)) {
+                    fetchNextPage(fetchCount + 1, pageInfo);
+                } else {
+                    fetchNextLabel();
+                }
+            }
+            
+            function fetchNextPage(fetchCount, pageInfo) {
+                makeQuery(pageInfo.endCursor)
+                    .then(data => handleData(data, fetchCount))
+                    .catch(error => {
+                        console.error('Error fetching next page:', error);
+                        showError('Failed to load more data. Please try again.');
+                        hideLoadingSpinner();
+                    });
+            }
+            
+            function fetchNextLabel() {
+                labelIndex += 1;
+                if (labelIndex >= ISSUE_LABELS.length) {
+                    finishedFetchingRepos();
+                } else {
+                    makeQuery()
+                        .then(data => handleData(data, 0))
+                        .catch(error => {
+                            console.error('Error fetching label:', error);
+                            showError('Failed to load data. Please try again.');
+                            hideLoadingSpinner();
+                        });
+                }
+            }
+            
+            function finishedFetchingRepos() {
+                hideLoadingSpinner();
+                
+                if (issuesFetched.length === 0) {
+                    showEmptyState();
+                    return;
+                }
+                
+                const repoNameDict = {};
+                const repoDict = {};
+                currentRepositories = createContainers(issuesFetched, repoDict, repoNameDict);
+                currentRepositories = sortRepositories(currentRepositories, currentSort);
+                
+                renderTable(currentRepositories, currentPage, parameters.resultsPerPage);
+                renderPagination(currentRepositories.length, currentPage, parameters.resultsPerPage);
+                
+                // Set up sorting handlers
+                document.querySelectorAll('.sortsTable').forEach(element => {
+                    element.addEventListener('click', function() {
+                        const sortValue = this.getAttribute('data-sort');
+                        currentSort = sortValue;
+                        document.getElementById('sortSelect').value = sortValue;
+                        currentRepositories = sortRepositories(currentRepositories, sortValue);
+                        renderTable(currentRepositories, currentPage, parameters.resultsPerPage);
+                    });
+                });
+            }
+            
+            // Start the fetching process
+            makeQuery()
+                .then(data => handleData(data, 0))
+                .catch(error => {
+                    console.error('Error in main fetch:', error);
+                    showError('Failed to load data. Please check your internet connection and try again.');
+                    hideLoadingSpinner();
+                });
+        }
+        
+        function onSortChange() {
+            const parameters = getHTMLParameters();
+            currentSort = parameters.sortBy;
+            
+            if (currentRepositories.length > 0) {
+                currentRepositories = sortRepositories(currentRepositories, currentSort);
+                renderTable(currentRepositories, currentPage, parameters.resultsPerPage);
+            }
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up initial state
+            showEmptyState();
+            
+            // Add event listeners for sorting table headers
+            document.querySelectorAll('.sortsTable').forEach(element => {
+                element.addEventListener('click', function() {
+                    const sortValue = this.getAttribute('data-sort');
+                    document.getElementById('sortSelect').value = sortValue;
+                    onSortChange();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
