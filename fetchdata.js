@@ -326,3 +326,19 @@ function fetchQuery(query, variables, callback)  {
     		callback(data);
 	});
 }
+
+function deduplicateIssues(issues) {
+    const seen = new Set();
+    const uniqueIssues = [];
+
+    issues.forEach(issue => {
+        if (!issue || !issue.url) return;
+
+        if (!seen.has(issue.url)) {
+            seen.add(issue.url);
+            uniqueIssues.push(issue);
+        }
+    });
+
+    return uniqueIssues;
+}
