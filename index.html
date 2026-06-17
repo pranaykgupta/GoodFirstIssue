@@ -505,11 +505,11 @@ function formatNameCell(repoOwnerLogin, repoName, url, row) {
 function formatUpdatedAtDate(updatedAt) {
   var date = new Date(updatedAt);
   var monthNames = [
-   	 "Jan", "Feb", "May",
-   	 "Apr", "May", "June", "July",
-   	 "Aug", "Sept", "Oct",
-   	 "Nov", "Dec"
-  ];
+  	"Jan", "Feb", "Mar",
+ 	"Apr", "May", "Jun",
+ 	"Jul", "Aug", "Sep",
+ 	"Oct", "Nov", "Dec"
+];
 
   var day = date.getDate();
   var monthIndex = date.getMonth();
