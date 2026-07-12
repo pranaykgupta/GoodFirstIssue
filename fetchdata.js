@@ -78,19 +78,15 @@ function afterDateLimit(date, todaysDate, monthLimit) {
 	return daysBtwn >= dayLimit
 }
 
-
 class RepositoryContainer {
-	constructor(issue) {
-		this.owner = issue.repository.owner.login
-		this.name = issue.repository.name
-		this.starcount = issue.repository.stargazers.totalCount
-		this.issues = [ issue ]
-		this.url = issue.repository.url
-	}
-
-	addIssue(issue) {
-		this.issues.push(issue);
-	}
+    constructor(issue) {
+        this.owner = issue.repository.owner;
+        this.name = issue.repository.name;
+        this.starcount = issue.repository.starcount;
+        this.issues = [ issue ];
+        this.url = issue.repository.url;
+        this.updatedAt = issue.repository.updatedAt;
+    }
 }
 
 
