@@ -31,17 +31,43 @@ body {
 .GoodFirstIssue {
 	background-color: #7057ff;
 	color: #ffffff;
+	 transition: transform 0.3s ease-out; /* Controls smoothness */
+     transform-origin: center;            /* Forces outward movement from middle */
 }
+
+.GoodFirstIssue:hover {
+  transform: scale(1.15); /* Moves outward by increasing size by 15% */
+  background-color: #A7C7E7;
+}
+
 
 .StarterTask {
     background-color: #62dbc9;
     color: #000000;
+	 transition: transform 0.3s ease-out; /* Controls smoothness */
+     transform-origin: center;            /* Forces outward movement from middle */
 }
 
-.HelpWanted {
-    background-color: #008672;
-    color: #ffffff;
+.StarterTask:hover {
+  transform: scale(1.15); /* Moves outward by increasing size by 15% */
+  background-color: #d00a0a;
 }
+
+
+.HelpWanted {
+    background-color: #1e8940;
+    color: #ffffff;
+	 transition: transform 0.3s ease-out; /* Controls smoothness */
+     transform-origin: center;            /* Forces outward movement from middle */
+}
+
+.HelpWanted:hover {
+  transform: scale(1.15); /* Moves outward by increasing size by 15% */
+  background-color: #a110ef;
+}
+
+	
+
 
 .search-body {
 background-color: #ffffff;
@@ -190,44 +216,133 @@ cursor: url(hand.cur), pointer;
 		<div class="row d-block">
 		<h1>Find Great Open Source Opportunities.</h1>
 		<p class="lead">Made for new contributors to find great Open Source projects.</p>
-		<p>Discover Issues and Repositories with <label class="IssueLabel HelpWanted">Help Wanted</label> <label class="IssueLabel StarterTask">Starter Task</label> and <Label class="IssueLabel GoodFirstIssue">Good First Issue</label> labels. </p>
+		<h3>Discover issues and repositories with the following labels:</h3>
+<ul>
+  <li><label class="IssueLabel HelpWanted">Help Wanted</label></li>
+  <li><label class="IssueLabel StarterTask">Starter Task</label></li>
+  <li><label class="IssueLabel GoodFirstIssue">Good First Issue</label></li>
+</ul>
 		</div>
 	</div>
 
-	<div class="container search-body">
-  		<div class="row">
-				<div class = 'form-header'>
-				<form class="QueryParametersForm form-inline" onsubmit="onSubmitButton();return false;">
-						<select class="LanguageOptions form-control" onchange="onSubmitButton()">
-							<option>Choose Language</option>
-							<option value="ActionScript">ActionScript</option>
-							<option value="C">C</option>
-							<option value="C#">C#</option>
-							<option value="C++">C++</option>
-							<option value="Clojure">Clojure</option>
-							<option value="CoffeeScript">CoffeeScript</option>
-							<option value="CSS">CSS</option>
-							<option value="Go">Go</option>
-							<option value="Haskell">Haskell</option>
-							<option value="HTML">HTML</option>
-							<option value="Java">Java</option>
-							<option value="JavaScript">JavaScript</option>
-							<option value="Lua">Lua</option>
-							<option value="Matlab">Matlab</option>
-							<option value="Objective-C">Objective-C</option>
-							<option value="Perl">Perl</option>
-							<option value="PHP">PHP</option>
-							<option value="Python">Python</option>
-							<option value="R">R</option>
-							<option value="Ruby">Ruby</option>
-							<option value="Scala">Scala</option>
-							<option value="Shell">Shell</option>
-							<option value="Swift">Swift</option>
-							<option value="TeX">TeX</option>
-							<option value="Vim script">Vim script</option>
-						</select>
-					</form>
-				</div>
+	<div class="container search-body my-4">
+    <div class="row">
+        <div class="col-12 border rounded p-4 shadow-sm bg-white id="mainCard"">
+            
+            <!-- Header Section with Toggle Button -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="m-0 font-weight-bold">Settings & Filters</h5>
+                
+                <!-- Toggle Switch UI -->
+                <div class="d-flex align-items-center gap-2">
+                    <span id="themeLabel" class="small text-muted me-2">Dark Mode</span>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <hr class="my-3">
+
+            <!-- Your Existing Query Parameters Form -->
+            <div class="form-header">
+                <form class="QueryParametersForm form-inline d-flex flex-column flex-md-row align-items-md-center gap-2" onsubmit="onSubmitButton();return false;">
+                    
+                    <label for="languageSelect" class="form-label mb-2 mb-md-0 me-md-2">
+                        <strong>Choose the programming language you'd like to explore:</strong>
+                    </label>
+
+                    <select id="languageSelect" class="LanguageOptions form-control w-auto" onchange="onSubmitButton()">
+                        <option value="" disabled selected>Select a Language...</option>
+                        <option value="ActionScript">ActionScript</option>
+                        <option value="C">C</option>
+                        <option value="C#">C#</option>
+                        <option value="C++">C++</option>
+                        <option value="Clojure">Clojure</option>
+                        <option value="CSS">CSS</option>
+                        <option value="Go">Go</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                        <option value="Ruby">Ruby</option>
+                    </select>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Styling for the Toggle Switch Button -->
+<style>
+  .theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+    margin: 0;
+  }
+
+  .theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 24px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #0d6efd; /* Active blue color */
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+
+  /* Simple Dark Mode Styling applied when active */
+  body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+  }
+  
+  body.dark-mode .bg-white {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+  }
+</style>
+
+<!-- JavaScript logic for toggle -->
+<script>
+  function toggleTheme() {
+    const isChecked = document.getElementById('themeToggle').checked;
+    
+    if (isChecked) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
+</script>
 
 		<div class="table-responsive">
 		<div class="spinner"></div>
@@ -655,28 +770,26 @@ function onSubmitButton() {
 }
 
 
-function fetchQuery(query, variables, callback)  {
-	//https://graphql.org/graphql-js/graphql-clients/
+function fetchQuery(query, variables, callback) {
+    const token = 'ghp_YOUR_PERSONAL_ACCESS_TOKEN_HERE';
+    var body = JSON.stringify({
+        query,
+        variables: variables,
+    });
 
-	var body = JSON.stringify({
-                query,
-                variables: variables,
-	});
+    fetch('https://api.github.com/graphql', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token ,
 
-
-	fetch('https://api.github.com/graphql',
-	{
-        	method: 'POST',
-        	headers: {
-                	'Content-Type': 'application/json',
-                	'Accept': 'application/json',
-                	'Authorization': 'Bearer' + ' ' + token,
-        	},
-        	body: body
-
-	}).then(r => r.json()).then(data => {
-    		callback(data);
-	});
+            'Authorization': `Bearer ${token}`
+        },
+        body: body
+    }).then(r => r.json()).then(data => {
+        callback(data);
+    });
 }
 
 
