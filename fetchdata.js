@@ -1,4 +1,4 @@
-// module.exports = { onSubmitButton, sum  };
+
 // https://www.flightlist.io/
 
 
@@ -303,7 +303,7 @@ function onSubmitButton() {
 
 
 function fetchQuery(query, variables, callback)  {
-	var token = '3d1937628560b5d023c8a239fd0fa8245bfdd553';
+	var token = process.env.GITHUB_TOKEN;
 	//https://graphql.org/graphql-js/graphql-clients/
 
 	var body = JSON.stringify({
@@ -326,3 +326,6 @@ function fetchQuery(query, variables, callback)  {
     		callback(data);
 	});
 }
+
+
+module.exports = { onSubmitButton, daysBetweenDates };

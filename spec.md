@@ -21,7 +21,3 @@ GoodFirstIssue.com
 
 
 what has changed since you last came - closed and open issues ? 
-
-
-
-
